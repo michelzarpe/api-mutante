@@ -1,4 +1,4 @@
-package com.michelzarpelon.mutante;
+package com.michelzarpelon.mutante.controller;
 
 
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
