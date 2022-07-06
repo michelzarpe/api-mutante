@@ -1,6 +1,7 @@
 package com.michelzarpelon.mutante.controller;
 
 
+import com.michelzarpelon.mutante.dto.DNADto;
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +20,9 @@ public class MutantController {
     private IClassifiesIndividualService iClassifiesIndividualService;
 
     @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
-    //TODO ARUMAR REQUEST BODY
-    public ResponseEntity<?> isMutant(@Validated @RequestBody String[] request) {
+    public ResponseEntity<?> isMutant(@Validated @RequestBody DNADto request) {
 
-        if (iClassifiesIndividualService.isMutant(request)) {
+        if (iClassifiesIndividualService.isMutant(request.getDna())) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
