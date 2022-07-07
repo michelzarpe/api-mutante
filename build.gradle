@@ -15,8 +15,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'javax.validation:validation-api'
 	implementation 'org.hibernate.validator:hibernate-validator'
+	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -38,6 +40,7 @@ jacocoTestReport {
 					'com/michelzarpelon/mutante/MutanteApplication.class',
 					'com/michelzarpelon/mutante/MutanteApplication',
 					'com/michelzarpelon/mutante/config/**',
+					'com/michelzarpelon/mutante/model/**',
 					'com/michelzarpelon/mutante/dto/**'
 			])
 		}))}
