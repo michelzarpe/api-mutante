@@ -60,6 +60,8 @@ class StatusServiceTests {
         var result = statusService.getStatusLineage();
 
         assertEquals(expected.getRatio(),result.getRatio());
+		assertEquals(expected.getCount_human_dna(),result.getCount_human_dna());
+		assertEquals(expected.getCount_mutant_dna(),result.getCount_mutant_dna());
     }
 
 
