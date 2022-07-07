@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ResourceExceptionHandler {
 
     @ExceptionHandler(ObjectWithConversionProblemsException.class)
-    public ResponseEntity<StandardError> objectWithConversionProblems(ObjectNotFoundException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> objectWithConversionProblems(ObjectWithConversionProblemsException e, HttpServletRequest request) {
         StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Não processado", e.getMessage(), request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(err);
     }
 
     @ExceptionHandler(ObjectNotFoundException.class)
