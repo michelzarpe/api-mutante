@@ -49,10 +49,8 @@ public class StatusService implements IStatusService {
         }
     }
 
-
-    //TODO TESTAR DIVISAO POR ZERO
     @Override
     public Double getRatio(Integer totMutant, Integer totHuman) {
-        return Math.floor((totMutant / (double) totHuman) * 100) / 100;
+        return (totHuman > 0) ? Math.floor((totMutant / (double) totHuman) * 100) / 100 : 0;
     }
 }
