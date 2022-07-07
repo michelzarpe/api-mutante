@@ -16,5 +16,4 @@ public interface IClassifiesIndividualService {
 
     public String arrayToString(String[] dna);
 
-
 }
