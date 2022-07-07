@@ -1,5 +1,7 @@
 package com.michelzarpelon.mutante.service;
 
+import com.michelzarpelon.mutante.model.Lineage;
+
 public interface IClassifiesIndividualService {
 
     public boolean isMutant(String[] dna);
@@ -15,5 +17,7 @@ public interface IClassifiesIndividualService {
     public String[][] arrayToTwoDimensionallyArray(String[] dna);
 
     public String arrayToString(String[] dna);
+
+    public void save(Lineage lineage);
 
 }
