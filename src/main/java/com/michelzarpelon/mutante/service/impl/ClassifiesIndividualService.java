@@ -37,8 +37,7 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public boolean hasFourIdenticalLettersHorizontally(String[] dna) {
-        String concatDna = arrayToString(dna);
-        return containRepeatedCharacters(concatDna);
+        return containRepeatedCharacters(dna);
     }
 
     @Override
@@ -48,6 +47,13 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
                 dna.contains(Base.TTTT.name()) ||
                 dna.contains(Base.CCCC.name()) ||
                 dna.contains(Base.GGGG.name());
+    }
+
+    public boolean containRepeatedCharacters(String[] dna) {
+        for (String item: dna){
+            if(containRepeatedCharacters(item)) return true;
+        }
+        return false;
     }
 
     @Override
