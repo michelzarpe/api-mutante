@@ -2,6 +2,7 @@ package com.michelzarpelon.mutante.config;
 
 import com.michelzarpelon.mutante.config.exception.DataIntegrityException;
 import com.michelzarpelon.mutante.config.exception.ObjectNotFoundException;
+import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import com.michelzarpelon.mutante.config.exception.StandardError;
 import com.michelzarpelon.mutante.config.exception.ValidationError;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
+
+    @ExceptionHandler(ObjectWithConversionProblemsException.class)
+    public ResponseEntity<StandardError> objectWithConversionProblems(ObjectNotFoundException e, HttpServletRequest request) {
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Não processado", e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
         StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Não Econtrado", e.getMessage(), request.getRequestURI());

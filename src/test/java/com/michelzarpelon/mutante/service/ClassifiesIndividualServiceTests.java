@@ -1,5 +1,8 @@
 package com.michelzarpelon.mutante.service;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import com.michelzarpelon.mutante.service.impl.ClassifiesIndividualService;
 
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.InjectMocks;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -35,6 +39,17 @@ class ClassifiesIndividualServiceTests {
 	void isNotMutant() {
 		String[] dnaMutant = {"CTGATA", "CTTTGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"};
 		assertEquals(false, classifiesIndividualService.isMutant(dnaMutant));
+	}
+
+	@DisplayName("is not mutant")
+	@Test()
+	void isMutanteWithException() {
+		String[] dnaMutant = null;
+		ObjectWithConversionProblemsException thrown =
+				assertThrows(ObjectWithConversionProblemsException.class,
+				() -> classifiesIndividualService.isMutant(dnaMutant),
+				"Não Foi possível processar objeto");
+		assertTrue(thrown.getMessage().contains("Não Foi possível processar objeto"));
 	}
 
 	@DisplayName("is mutant by diagonal")

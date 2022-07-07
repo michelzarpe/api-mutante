@@ -1,5 +1,6 @@
 package com.michelzarpelon.mutante.service.impl;
 
+import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import com.michelzarpelon.mutante.enums.Base;
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
 import java.util.Locale;
@@ -13,11 +14,18 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public boolean isMutant(String[] dna) {
-        return hasFourIdenticalLettersHorizontally(dna) || hasFourIdenticalLettersVertically(dna) || hasFourIdenticalLettersDiagonally(dna);
+        try{
+            LOGGER.info("Processando objeto em isMutant ["+dna+"]");
+            return hasFourIdenticalLettersHorizontally(dna) || hasFourIdenticalLettersVertically(dna) || hasFourIdenticalLettersDiagonally(dna);
+        }catch (Exception e){
+            LOGGER.severe("Erro ao processar objeto ["+dna+"]");
+            throw new ObjectWithConversionProblemsException("Não Foi possível processar objeto");
+        }
     }
 
     @Override
     public boolean hasFourIdenticalLettersVertically(String[] dna) {
+        LOGGER.info("Processando objeto ["+dna+"] em hasFourIdenticalLettersVertically");
         String dnaColumn = "";
         final String matriz[][] = arrayToTwoDimensionallyArray(dna);
         final Integer height = matriz.length;
@@ -37,11 +45,13 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public boolean hasFourIdenticalLettersHorizontally(String[] dna) {
+        LOGGER.info("Processando objeto ["+dna+"] em hasFourIdenticalLettersHorizontally");
         return containRepeatedCharacters(dna);
     }
 
     @Override
     public boolean containRepeatedCharacters(String dna) {
+        LOGGER.info("Processando objeto ["+dna+"] em containRepeatedCharacters");
         //TODO FAZER EM REGEX
         return dna.contains(Base.AAAA.name()) ||
                 dna.contains(Base.TTTT.name()) ||
@@ -50,6 +60,7 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
     }
 
     public boolean containRepeatedCharacters(String[] dna) {
+        LOGGER.info("Processando objeto ["+dna+"] em containRepeatedCharacters");
         for (String item: dna){
             if(containRepeatedCharacters(item)) return true;
         }
@@ -58,6 +69,7 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public boolean hasFourIdenticalLettersDiagonally(String[] dna) {
+        LOGGER.info("Processando objeto ["+dna+"] em hasFourIdenticalLettersDiagonally");
         String dnaDiagonally = "";
         final String matriz[][] = arrayToTwoDimensionallyArray(dna);
         final Integer height = dna.length;
@@ -84,6 +96,7 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public String[][] arrayToTwoDimensionallyArray(String[] dna) {
+        LOGGER.info("Convertendo objeto ["+dna+"] em arrayToTwoDimensionallyArray");
         Integer position = 0;
         final Integer height = dna.length;
         final Integer width = dna[0].length();
