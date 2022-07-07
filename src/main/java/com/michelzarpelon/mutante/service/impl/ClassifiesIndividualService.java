@@ -8,7 +8,6 @@ import com.michelzarpelon.mutante.model.Lineage;
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
 import java.util.Locale;
 import java.util.logging.Logger;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,11 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
         try {
             LOGGER.info("Processando objeto em isMutant [" + dna + "]");
             boolean isMutant = hasFourIdenticalLettersHorizontally(dna) || hasFourIdenticalLettersVertically(dna) || hasFourIdenticalLettersDiagonally(dna);
+
+            save(new Lineage(null, arrayToString(dna), isMutant));
+
             return isMutant;
-        }catch (DataIntegrityException e) {
+        } catch (DataIntegrityException e) {
             LOGGER.severe("Erro ao salvar objeto [" + dna + "]");
             throw new ObjectWithConversionProblemsException("Não foi possível salvar o objeto");
         } catch (Exception e) {
@@ -133,11 +135,11 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public void save(Lineage lineage) {
-        try{
+        try {
             iLineageRepository.save(lineage);
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.severe("Erro ao salvar objeto [" + lineage + "]");
-            throw new DataIntegrityException("Não foi possível salvar o objeto "+e.getMessage());
+            throw new DataIntegrityException("Não foi possível salvar o objeto " + e.getMessage());
         }
 
     }
