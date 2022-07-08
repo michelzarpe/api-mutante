@@ -1,5 +1,6 @@
-package com.michelzarpelon.mutante.model;
+package com.michelzarpelon.mutante.repository;
 
+import com.michelzarpelon.mutante.model.Lineage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

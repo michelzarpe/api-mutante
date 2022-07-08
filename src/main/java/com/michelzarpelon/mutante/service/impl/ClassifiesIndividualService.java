@@ -3,7 +3,7 @@ package com.michelzarpelon.mutante.service.impl;
 import com.michelzarpelon.mutante.config.exception.DataIntegrityException;
 import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import com.michelzarpelon.mutante.enums.Base;
-import com.michelzarpelon.mutante.model.ILineageRepository;
+import com.michelzarpelon.mutante.repository.ILineageRepository;
 import com.michelzarpelon.mutante.model.Lineage;
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
 import java.util.ArrayList;
