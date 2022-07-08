@@ -2,7 +2,7 @@ package com.michelzarpelon.mutante.service;
 
 import com.michelzarpelon.mutante.config.exception.CalculateException;
 import com.michelzarpelon.mutante.dto.StatusDto;
-import com.michelzarpelon.mutante.repository.ILineageRepository;
+import com.michelzarpelon.mutante.repositories.ILineageRepository;
 import com.michelzarpelon.mutante.model.Lineage;
 import com.michelzarpelon.mutante.service.impl.StatusService;
 import java.util.Arrays;

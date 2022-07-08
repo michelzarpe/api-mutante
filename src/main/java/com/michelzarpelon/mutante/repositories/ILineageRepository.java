@@ -1,4 +1,4 @@
-package com.michelzarpelon.mutante.repository;
+package com.michelzarpelon.mutante.repositories;
 
 import com.michelzarpelon.mutante.model.Lineage;
 import org.springframework.data.jpa.repository.JpaRepository;
