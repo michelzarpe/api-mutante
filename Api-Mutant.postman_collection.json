@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "0c16f052-aa0d-48b5-a2b1-4244fb7e48f6",
+		"name": "Api-Mutant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4151516"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Is Mutant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"CTGATA\", \"CTATGC\", \"TATTGT\", \"AGATGG\", \"CTCCTA\", \"TCACTG\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/mutant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mutant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Is not Mutant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"CTGATA\", \"CTTTGC\", \"TATTGT\", \"AGATGG\", \"CTCCTA\", \"TCACTG\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/mutant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mutant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
