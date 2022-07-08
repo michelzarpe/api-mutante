@@ -62,8 +62,6 @@ class StatusServiceTests {
 		assertEquals(expected.getCount_mutant_dna(),result.getCount_mutant_dna());
     }
 
-
-
     @Test()
     void getStatusLineageWithException() {
 
@@ -76,5 +74,16 @@ class StatusServiceTests {
         assertTrue(thrown.getMessage().contains("Erro ao realizar calculo da proporção"));
     }
 
+    @Test
+    void testGetRatioWithZero(){
+        var resutl = statusService.getRatio(0,0);
+        assertEquals(0,resutl);
+    }
+
+    @Test
+    void testGetRatioDifZero(){
+        var resutl = statusService.getRatio(1,2);
+        assertEquals(0.5D,resutl);
+    }
 
 }
