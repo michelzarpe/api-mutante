@@ -86,4 +86,18 @@ class StatusServiceTests {
         assertEquals(0.5D,resutl);
     }
 
+
+    @Test()
+    void getStatusLineageWithException() {
+
+        when(iLineageRepository.findAll()).thenThrow(new CalculateException(""));
+
+        CalculateException thrown =
+                assertThrows(CalculateException.class,
+                        () -> statusService.getStatusLineage(),
+                        "Erro ao realizar calculo da proporção");
+        assertTrue(thrown.getMessage().contains("Erro ao realizar calculo da proporção"));
+    }
+
+
 }
