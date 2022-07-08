@@ -21,7 +21,6 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
     @Autowired
     private ILineageRepository iLineageRepository;
 
-
     @Override
     public boolean isMutant(String[] dna) {
         try {
@@ -29,6 +28,8 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
             LOGGER.info("Processando objeto em isMutant [" + dna + "]");
 
             hasNitrogenBase(dna);
+
+            isAPossibleSquareMatrix(dna);
 
             boolean isMutant = hasFourIdenticalLettersHorizontally(dna) || hasFourIdenticalLettersVertically(dna) || hasFourIdenticalLettersDiagonally(dna);
 
@@ -83,7 +84,8 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
     public boolean containRepeatedCharacters(String[] dna) {
         LOGGER.info("Processando objeto [" + dna + "] em containRepeatedCharacters");
         for (String item : dna) {
-            if (containRepeatedCharacters(item)) return true;
+            if (containRepeatedCharacters(item))
+                return true;
         }
         return false;
     }
@@ -108,7 +110,8 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
                 dnaDiagonally = dnaDiagonally + matriz[Math.min(height, diagonalLine) - j - 1][start_col + j];
             }
 
-            if (containRepeatedCharacters(dnaDiagonally)) return true;
+            if (containRepeatedCharacters(dnaDiagonally))
+                return true;
 
             dnaDiagonally = "";
         }
@@ -158,12 +161,12 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
         String concatDna = arrayToString(dna);
 
         concatDna = concatDna
-                .replace("A","")
-                .replace("T","")
-                .replace("C","")
-                .replace("G","");
+                .replace("A", "")
+                .replace("T", "")
+                .replace("C", "")
+                .replace("G", "");
 
-        if(concatDna.length()>0){
+        if (concatDna.length() > 0) {
             LOGGER.info("Caracteres não validos [" + concatDna + " hasNitrogenBase");
             throw new ObjectWithConversionProblemsException("Caracteres não validos");
         }
@@ -182,11 +185,15 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
         var distinctElements = lengthItensList.stream().distinct();
 
-        if(distinctElements.count()>1) throw new ObjectWithConversionProblemsException("Tamanho dos indices não compativeis");
+        var countDistinctElements = distinctElements.count();
 
-        var elementFirst = distinctElements.findFirst();
+        if (countDistinctElements > 1)
+            throw new ObjectWithConversionProblemsException("Tamanho dos indices não compativeis");
 
-        if(elementFirst.get()!=dna.length) throw new ObjectWithConversionProblemsException("Não é uma matrix quadrada");
+        var elementFirst = lengthItensList.stream().findFirst();
+
+        if (elementFirst.get() != dna.length)
+            throw new ObjectWithConversionProblemsException("Não é uma matrix quadrada");
 
         return true;
     }
