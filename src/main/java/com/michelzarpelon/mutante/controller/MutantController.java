@@ -27,6 +27,4 @@ public class MutantController {
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
-
-
 }

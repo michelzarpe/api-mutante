@@ -23,7 +23,11 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
     @Override
     public boolean isMutant(String[] dna) {
         try {
+
             LOGGER.info("Processando objeto em isMutant [" + dna + "]");
+
+            hasNitrogenBase(dna);
+
             boolean isMutant = hasFourIdenticalLettersHorizontally(dna) || hasFourIdenticalLettersVertically(dna) || hasFourIdenticalLettersDiagonally(dna);
 
             save(new Lineage(null, arrayToString(dna), isMutant));
@@ -68,7 +72,7 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
     public boolean containRepeatedCharacters(String dna) {
         LOGGER.info("Processando objeto [" + dna + "] em containRepeatedCharacters");
         //TODO FAZER EM REGEX
-        return dna.contains(Base.AAAA.name()) ||
+        return dna.toUpperCase(Locale.ROOT).contains(Base.AAAA.name()) ||
                 dna.contains(Base.TTTT.name()) ||
                 dna.contains(Base.CCCC.name()) ||
                 dna.contains(Base.GGGG.name());
@@ -142,5 +146,20 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
             throw new DataIntegrityException("Não foi possível salvar o objeto " + e.getMessage());
         }
 
+    }
+
+    @Override
+    public boolean hasNitrogenBase(String[] dna) {
+        String concatDna = arrayToString(dna);
+
+        concatDna = concatDna
+                .replace("A","")
+                .replace("T","")
+                .replace("C","")
+                .replace("G","");
+
+        if(concatDna.length()>0) throw new ObjectWithConversionProblemsException("Caracteres não validos");
+
+        return true;
     }
 }

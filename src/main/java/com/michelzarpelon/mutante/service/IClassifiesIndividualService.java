@@ -20,4 +20,6 @@ public interface IClassifiesIndividualService {
 
     public void save(Lineage lineage);
 
+    public boolean hasNitrogenBase(String [] dna);
+
 }

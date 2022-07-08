@@ -102,4 +102,24 @@ class ClassifiesIndividualServiceTests {
 		when(iLineageRepository.save(any())).thenReturn(new Lineage());
 		assertEquals(true, classifiesIndividualService.isMutant(dnaMutant));
 	}
+
+	@DisplayName("has nitrogen base")
+	@Test
+	void hasNitrogenBaseSuccess() {
+		String[] dnaMutant = {"CTGTGA", "CTATGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"};
+		assertEquals(true, classifiesIndividualService.hasNitrogenBase(dnaMutant));
+	}
+
+	@DisplayName("has no nitrogen base")
+	@Test
+	void hasNotNitrogenBaseSuccess() {
+		String[] dnaMutant = {"CTGTGA", "CTATGC", "TATfGT", "AGATGG", "CTCCTA", "TCACTG"};
+
+		ObjectWithConversionProblemsException thrown =
+				assertThrows(ObjectWithConversionProblemsException.class,
+						() -> classifiesIndividualService.hasNitrogenBase(dnaMutant),
+						"Caracteres não validos");
+		assertTrue(thrown.getMessage().contains("Caracteres não validos"));
+	}
+
 }
