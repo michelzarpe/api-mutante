@@ -1,13 +1,11 @@
 package com.michelzarpelon.mutante.service;
 
+import com.michelzarpelon.mutante.config.exception.CalculateException;
 import com.michelzarpelon.mutante.config.exception.DataIntegrityException;
-import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import com.michelzarpelon.mutante.dto.StatusDto;
 import com.michelzarpelon.mutante.model.ILineageRepository;
 import com.michelzarpelon.mutante.model.Lineage;
-import com.michelzarpelon.mutante.service.impl.ClassifiesIndividualService;
 import com.michelzarpelon.mutante.service.impl.StatusService;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,7 +21,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -62,6 +60,20 @@ class StatusServiceTests {
         assertEquals(expected.getRatio(),result.getRatio());
 		assertEquals(expected.getCount_human_dna(),result.getCount_human_dna());
 		assertEquals(expected.getCount_mutant_dna(),result.getCount_mutant_dna());
+    }
+
+
+
+    @Test()
+    void getStatusLineageWithException() {
+
+        when(iLineageRepository.findAll()).thenThrow(new CalculateException(""));
+
+        CalculateException thrown =
+                assertThrows(CalculateException.class,
+                        () -> statusService.getStatusLineage(),
+                        "Erro ao realizar calculo da proporção");
+        assertTrue(thrown.getMessage().contains("Erro ao realizar calculo da proporção"));
     }
 
 
