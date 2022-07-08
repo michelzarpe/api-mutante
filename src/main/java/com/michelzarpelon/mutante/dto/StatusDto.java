@@ -16,7 +16,7 @@ public class StatusDto implements Serializable {
         this.ratio = ratio;
     }
 
-    public StatusDto() { }
+    public StatusDto(){}
 
     public Integer getCount_mutant_dna() {
         return count_mutant_dna;

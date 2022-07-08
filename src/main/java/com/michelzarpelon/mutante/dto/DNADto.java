@@ -15,10 +15,6 @@ public class DNADto implements Serializable {
     public DNADto() {
     }
 
-    public DNADto(String[] dna) {
-        this.dna = dna;
-    }
-
     public String[] getDna() {
         return dna;
     }

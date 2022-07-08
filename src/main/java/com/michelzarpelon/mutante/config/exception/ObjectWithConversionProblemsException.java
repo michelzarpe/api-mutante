@@ -8,7 +8,4 @@ public class ObjectWithConversionProblemsException extends RuntimeException {
         super(mensagem);
     }
 
-    public ObjectWithConversionProblemsException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }

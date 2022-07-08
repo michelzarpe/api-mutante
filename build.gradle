@@ -32,18 +32,6 @@ jacocoTestReport {
 		csv.required = false
 		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 	}
-
-	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: it, exclude: [
-					'com/michelzarpelon/mutante/MutanteApplication.java',
-					'com/michelzarpelon/mutante/MutanteApplication.class',
-					'com/michelzarpelon/mutante/MutanteApplication',
-					'com/michelzarpelon/mutante/config/**',
-					'com/michelzarpelon/mutante/model/**',
-					'com/michelzarpelon/mutante/dto/**'
-			])
-		}))}
 }
 
 jacoco {

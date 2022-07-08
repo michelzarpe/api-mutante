@@ -23,13 +23,19 @@ public class LineageRepository {
     @DisplayName("should return dna")
     @Test
     public void findLineageByDna(){
-        String dnaMutant = "CTGTTACTATGCTATTGTAGATGGCCCCTATCACTG";
-        entityManager.persist(new Lineage(null, "CTGTTACTATGCTATTGTAGATGGCCCCTATCACTG", true));
+
+        Lineage lineage = new Lineage();
+        lineage.setDna("CTGTTACTATGCTATTGTAGATGGCCCCTATCACTG");
+        lineage.setId(null);
+        lineage.setMutant(true);
+
+        entityManager.persist(lineage);
         entityManager.persist(new Lineage(null, "CTGATACTTTGCTATTGTAGATGGCTCCTATCACTG", false));
         entityManager.persist(new Lineage(null, "CTGATACTATGCTATTGTAGATGGCTCCAATCACTT", false));
         entityManager.flush();
-        Lineage lineage = lineageRepository.findLineageByDna(dnaMutant);
-        assertEquals(dnaMutant,lineage.getDna());
+
+        Lineage lineageReturn = lineageRepository.findLineageByDna(lineage.getDna());
+        assertEquals(lineage.getDna(),lineageReturn.getDna());
     }
 
 }

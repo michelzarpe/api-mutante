@@ -9,7 +9,4 @@ public class CalculateException extends RuntimeException {
         super(mensagem);
     }
 
-    public CalculateException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }

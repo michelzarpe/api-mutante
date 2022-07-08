@@ -2,12 +2,10 @@ package com.michelzarpelon.mutante.config;
 
 import com.michelzarpelon.mutante.config.exception.CalculateException;
 import com.michelzarpelon.mutante.config.exception.DataIntegrityException;
-import com.michelzarpelon.mutante.config.exception.ObjectNotFoundException;
 import com.michelzarpelon.mutante.config.exception.ObjectWithConversionProblemsException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -20,18 +18,8 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
-    @ExceptionHandler(ObjectNotFoundException.class)
-    public ResponseEntity<?> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-    }
-
     @ExceptionHandler(DataIntegrityException.class)
     public ResponseEntity<?> objectDataIntegrity(DataIntegrityException e, HttpServletRequest request) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> validation(MethodArgumentNotValidException e, HttpServletRequest request) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 

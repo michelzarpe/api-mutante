@@ -36,24 +36,35 @@ public class StatusControllerTest {
 
     @Test
     public void testGetStatusSuccess() throws Exception {
-
-
         var expected = new StatusDto(1, 2, 0.5D);
-
         ObjectMapper mapper = new ObjectMapper();
-
-
         when(statusService.getStatusLineage()).thenReturn(expected);
-
         var response = mockMvc.perform(
                 get("/stats")
                         .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-
         var result = response.andReturn().getResponse().getContentAsString();
-
         Assertions.assertThat(result).contains(mapper.writeValueAsString(expected));
-
     }
+
+    @Test
+    public void testGetStatusSuccessWithZero() throws Exception {
+        var expected = new StatusDto();
+
+        expected.setCount_human_dna(0);
+        expected.setRatio(0D);
+        expected.setCount_mutant_dna(0);
+        
+        ObjectMapper mapper = new ObjectMapper();
+        when(statusService.getStatusLineage()).thenReturn(expected);
+        var response = mockMvc.perform(
+                        get("/stats")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        var result = response.andReturn().getResponse().getContentAsString();
+        Assertions.assertThat(result).contains(mapper.writeValueAsString(expected));
+    }
+
 }
