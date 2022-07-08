@@ -22,4 +22,6 @@ public interface IClassifiesIndividualService {
 
     public boolean hasNitrogenBase(String [] dna);
 
+    public boolean isAPossibleSquareMatrix(String [] dna);
+
 }

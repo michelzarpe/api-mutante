@@ -6,6 +6,8 @@ import com.michelzarpelon.mutante.enums.Base;
 import com.michelzarpelon.mutante.model.ILineageRepository;
 import com.michelzarpelon.mutante.model.Lineage;
 import com.michelzarpelon.mutante.service.IClassifiesIndividualService;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,6 +152,9 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
 
     @Override
     public boolean hasNitrogenBase(String[] dna) {
+
+        LOGGER.info("Tem base nitrogenada [" + dna + " hasNitrogenBase");
+
         String concatDna = arrayToString(dna);
 
         concatDna = concatDna
@@ -158,7 +163,30 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
                 .replace("C","")
                 .replace("G","");
 
-        if(concatDna.length()>0) throw new ObjectWithConversionProblemsException("Caracteres não validos");
+        if(concatDna.length()>0){
+            LOGGER.info("Caracteres não validos [" + concatDna + " hasNitrogenBase");
+            throw new ObjectWithConversionProblemsException("Caracteres não validos");
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean isAPossibleSquareMatrix(String[] dna) {
+
+        var lengthItensList = new ArrayList<Integer>();
+
+        var dnaList = Arrays.stream(dna).toList();
+
+        dnaList.forEach(s -> {lengthItensList.add(s.length());});
+
+        var distinctElements = lengthItensList.stream().distinct();
+
+        if(distinctElements.count()>1) throw new ObjectWithConversionProblemsException("Tamanho dos indices não compativeis");
+
+        var elementFirst = distinctElements.findFirst();
+
+        if(elementFirst.get()!=dna.length) throw new ObjectWithConversionProblemsException("Não é uma matrix quadrada");
 
         return true;
     }
