@@ -59,7 +59,7 @@ Jacoco, cobertura:
 `curl --location --request POST 'http://localhost:8080/mutant' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-"dna":["CTGATA", "CTATGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]
+    "dna":["CTGATA", "CTTTGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]
 }'`
 ### Status
 `curl --location --request GET 'http://localhost:8080/stats'`
