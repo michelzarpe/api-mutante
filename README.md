@@ -33,7 +33,7 @@ Caso queira executar apontando para o banco em nuvem deixar o campo sem o comand
 ![img_1.png](img/_img_1.png)
 
 ## 2. aplication.properties (Mysql em nuvem)
-Retirar o comando -DSpring.profiles.active=develop ou -DSpring.profiles.active=local
+Retirar o comando -DSpring.profiles.active=develop
 ![img.png](img/_img.png)
   
 # Testes unitários:  
