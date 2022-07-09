@@ -4,7 +4,7 @@ Existe dois profiles nesse projeto:
 1. aplication.properties (Mysql em nuvem)
 2. aplication-develop.properties (Mysql em Docker)
 
-## 1. aplication-local.properties (Mysql Docker)
+## 1. aplication-develop.properties (Mysql Docker)
 
 Para executar localmente tem que fazer o seguintes passo:  
 ### Importar o projeto no **_Intellij_** e ter **DOCKER** instalado
