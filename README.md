@@ -4,13 +4,15 @@ Existe dois profiles nesse projeto:
 1. aplication.properties (Mysql em nuvem)
 2. aplication-develop.properties (Mysql em Docker)
 
+Quando executado com comunicação ao banco em nuvem não é performatico devido a rede. Então melhor executar com o mysql em docker.
+
 ## 1. aplication-develop.properties (Mysql Docker)
 
 Para executar localmente tem que fazer o seguintes passo:  
 ### Importar o projeto no **_Intellij_** e ter **DOCKER** instalado
 
 Dentro da pasta do projeto tem o arquivo docker-compose.yml.
-Executar comando via terminal docker-compose up:
+Executar comando via terminal sudo docker-compose up:
 ![img.png](img.png)
 
 Clicar em inicar: 
