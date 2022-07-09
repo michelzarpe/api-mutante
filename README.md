@@ -9,6 +9,10 @@ Existe dois profiles nesse projeto:
 Para executar localmente tem que fazer o seguintes passo:  
 ### Importar o projeto no **_Intellij_** e ter **DOCKER** instalado
 
+Dentro da pasta do projeto tem o arquivo docker-compose.yml.
+Executar comando via terminal docker-compose up:
+![img.png](img.png)
+
 Clicar em inicar: 
 ![img.png](img/img.png)
 
