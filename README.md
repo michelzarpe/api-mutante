@@ -69,10 +69,10 @@ curl --location --request POST 'http://localhost:8080/mutant' \
 curl --location --request GET 'http://localhost:8080/stats'  
 
 ### OBS: 
-1. _Não foi feito deploy em nuvem, conforme informado:_ 
-2. As Regras de negócio eu fiz conforme entendimento. Caso eu tenha entendido errado me desculpe. 
-
+1. _Não foi feito deploy em nuvem, conforme informado:_  
 ![img_1.png](img/img_1_.png)
+
+2. As Regras de negócio eu fiz conforme entendimento. Caso eu tenha entendido errado me desculpe. 
 
 Qualquer duvida pode me chamar:  
 tel: 49998231684  
