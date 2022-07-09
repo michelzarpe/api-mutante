@@ -49,12 +49,13 @@ Jacoco, cobertura:
 ![img.png](img/img_.png)
 
 ## CURL para profiles default e develop
-### is Mutant
-`curl --location --request POST 'http://localhost:8080/mutant' \  
+### is Mutant  
+curl --location --request POST 'http://localhost:8080/mutant' \  
 --header 'Content-Type: application/json' \  
---data-raw '{
-"dna":["CTGATA", "CTATGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]
-}'`
+--data-raw '{  
+    "dna":["CTGATA", "CTATGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]  
+}'    
+
 ### is Not Mutant
 
 curl --location --request POST 'http://localhost:8080/mutant' \  
@@ -64,8 +65,8 @@ curl --location --request POST 'http://localhost:8080/mutant' \
 }'
   
 
-### Status
-`curl --location --request GET 'http://localhost:8080/stats'`
+### Status  
+curl --location --request GET 'http://localhost:8080/stats'  
 
 ### OBS: 
 1. _Não foi feito deploy em nuvem, conforme informado:_ 
