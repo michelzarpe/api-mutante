@@ -99,14 +99,14 @@ public class ClassifiesIndividualService implements IClassifiesIndividualService
         final Integer width = dna[0].length();
         final Integer diagonalAmout = (height + width - 1);
 
-        //https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/
+
         for (int diagonalLine = 1; diagonalLine <= diagonalAmout; diagonalLine++) {
 
             int start_col = Math.max(0, diagonalLine - height);
 
-            int totDiagonalElements1 = Math.min(Math.min(diagonalLine, (width - start_col)), height);
+            int totDiagonalElements = Math.min(Math.min(diagonalLine, (width - start_col)), height);
 
-            for (int j = 0; j < totDiagonalElements1; j++) {
+            for (int j = 0; j < totDiagonalElements; j++) {
                 dnaDiagonally = dnaDiagonally + matriz[Math.min(height, diagonalLine) - j - 1][start_col + j];
             }
 
