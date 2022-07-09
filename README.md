@@ -56,11 +56,14 @@ Jacoco, cobertura:
 "dna":["CTGATA", "CTATGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]
 }'`
 ### is Not Mutant
-`curl --location --request POST 'http://localhost:8080/mutant' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dna":["CTGATA", "CTTTGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]
-}'`
+
+curl --location --request POST 'http://localhost:8080/mutant' \  
+--header 'Content-Type: application/json' \  
+--data-raw '{  
+    "dna":["CTGATA", "CTTTGC", "TATTGT", "AGATGG", "CTCCTA", "TCACTG"]  
+}'
+  
+
 ### Status
 `curl --location --request GET 'http://localhost:8080/stats'`
 
