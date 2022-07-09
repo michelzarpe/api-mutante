@@ -26,7 +26,7 @@ Add VM Options
 ![img_4.png](img/img_4.png)
 
 Acrescentar o seguinte comando conforme o print: -DSpring.profiles.active=local   
-Obs: Para exeuctar em develop é só trocar o comando para -DSpring.profiles.active=develop.   
+Obs: Para executar em develop é só trocar o comando para -DSpring.profiles.active=develop.   
 Caso queira executar apontando para o banco em nuvem deixar o campo sem o comando.
 ![img_5.png](img/img_5.png)
 
