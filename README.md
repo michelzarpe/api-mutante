@@ -1,14 +1,13 @@
 # api-mutante
 
-Existe três profiles nesse projeto:
+Existe dois profiles nesse projeto:
 1. aplication.properties (Mysql em nuvem)
 2. aplication-develop.properties (Mysql em Docker)
-3. aplication-local.properties (H2)
 
-## 1. aplication-local.properties (H2)
+## 1. aplication-local.properties (Mysql Docker)
 
 Para executar localmente tem que fazer o seguintes passo:  
-### Importar o projeto no **_Intellij_**
+### Importar o projeto no **_Intellij_** e ter **DOCKER** instalado
 
 Clicar em inicar: 
 ![img.png](img/img.png)
@@ -25,16 +24,11 @@ Ir e clicar em Modify
 Add VM Options  
 ![img_4.png](img/img_4.png)
 
-Acrescentar o seguinte comando conforme o print: -DSpring.profiles.active=local   
-Obs: Para executar em develop é só trocar o comando para -DSpring.profiles.active=develop.   
+Acrescentar o seguinte comando conforme o print: -DSpring.profiles.active=develop
 Caso queira executar apontando para o banco em nuvem deixar o campo sem o comando.
-![img_5.png](img/img_5.png)
-
-## 2. aplication-develop.properties (Mysql em Docker)
--DSpring.profiles.active=develop
 ![img_1.png](img/_img_1.png)
 
-## 3. aplication.properties (Mysql em nuvem)
+## 2. aplication.properties (Mysql em nuvem)
 Retirar o comando -DSpring.profiles.active=develop ou -DSpring.profiles.active=local
 ![img.png](img/_img.png)
   
@@ -50,7 +44,7 @@ Jacoco, cobertura:
 ![img_9.png](img/img_9.png)    
 ![img.png](img/img_.png)
 
-## CURL para profiles default, develop e local
+## CURL para profiles default e develop
 ### is Mutant
 `curl --location --request POST 'http://localhost:8080/mutant' \  
 --header 'Content-Type: application/json' \  
