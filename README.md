@@ -15,7 +15,7 @@ Dentro da pasta do projeto tem o arquivo docker-compose.yml.
 Executar comando via terminal sudo docker-compose up:
 ![img.png](img.png)
 
-Clicar em inicar: 
+Clicar em inicar:  
 ![img.png](img/img.png)
 
 Apertar stop  
@@ -24,7 +24,7 @@ Apertar stop
 Editar Configurações  
 ![img_2.png](img/img_2.png)
 
-Ir e clicar em Modify
+Ir e clicar em Modify  
 ![img_3.png](img/img_3.png)
   
 Add VM Options  
@@ -34,15 +34,15 @@ Acrescentar o seguinte comando conforme o print: -DSpring.profiles.active=develo
 Caso queira executar apontando para o banco em nuvem deixar o campo sem o comando.
 ![img_1.png](img/_img_1.png)
 
-## 2. aplication.properties (Mysql em nuvem)
-Retirar o comando -DSpring.profiles.active=develop
+## 2. aplication.properties (Mysql em nuvem)  
+Retirar o comando -DSpring.profiles.active=develop  
 ![img.png](img/_img.png)
   
 # Testes unitários:  
-Cobertura em Service, Controller e Repository.  
+Cobertura em Service, Controller e Repository (com bando H2).  
 ![img_6.png](img/img_6.png)  
 
-Jacoco, cobertura: 
+Jacoco, cobertura:   
 ![img_7.png](img/img_7.png)  
 ![img_8.png](img/img_8.png)  
     
