@@ -1,6 +1,5 @@
 # api-mutante
 
-
 Existe três profiles nesse projeto:
 1. aplication.properties (Mysql em nuvem)
 2. aplication-develop.properties (Mysql em Docker)
@@ -32,9 +31,12 @@ Caso queira executar apontando para o banco em nuvem deixar o campo sem o comand
 ![img_5.png](img/img_5.png)
 
 ## 2. aplication-develop.properties (Mysql em Docker)
+-DSpring.profiles.active=develop
+![img_1.png](img/_img_1.png)
 
 ## 3. aplication.properties (Mysql em nuvem)
-
+Retirar o comando -DSpring.profiles.active=develop ou -DSpring.profiles.active=local
+![img.png](img/_img.png)
   
 # Testes unitários:  
 Cobertura em Service, Controller e Repository.  
@@ -46,7 +48,7 @@ Jacoco, cobertura:
     
 # Colletion   
 ![img_9.png](img/img_9.png)    
-![img.png](img.png)
+![img.png](img/img_.png)
 
 ## CURL para profiles default, develop e local
 ### is Mutant
@@ -63,3 +65,14 @@ Jacoco, cobertura:
 }'`
 ### Status
 `curl --location --request GET 'http://localhost:8080/stats'`
+
+### OBS: 
+1. _Não foi feito deploy em nuvem, conforme informado:_ 
+2. As Regras de negócio eu fiz conforme entendimento. Caso eu tenha entendido errado me desculpe. 
+
+![img_1.png](img/img_1_.png)
+
+Qualquer duvida pode me chamar:  
+tel: 49998231684  
+email: michelzarpe@gmail.com  
+linkedin: https://www.linkedin.com/in/michel-zarpelon-38a8a5152/
