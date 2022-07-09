@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'javax.validation:validation-api'
 	implementation 'org.hibernate.validator:hibernate-validator'
+	implementation 'mysql:mysql-connector-java'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
